@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,5 +23,11 @@ namespace JuliePro.Models.Data
             #endregion
         }
 
+=======
+﻿namespace JuliePro.Models.Data
+{
+    public class ModelBuilderDataGenerator
+    {
+>>>>>>> TP1
     }
 }

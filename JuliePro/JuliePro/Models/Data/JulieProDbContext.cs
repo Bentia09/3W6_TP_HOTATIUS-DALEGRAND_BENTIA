@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using Microsoft.EntityFrameworkCore;
 using JuliePro.Models.Data;
 
@@ -14,5 +15,11 @@ namespace JuliePro.Models.Data
 
 
 
+=======
+﻿namespace JuliePro.Models.Data
+{
+    public class JulieProDbContext
+    {
+>>>>>>> TP1
     }
 }
