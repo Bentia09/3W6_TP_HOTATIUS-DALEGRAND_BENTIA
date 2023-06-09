@@ -10,6 +10,6 @@ namespace JuliePro.Models
         [MaxLength(20)]
        public string Name { get; set; }
         public int? Id { get; set; }
-       
+       public virtual Trainer? Trainer { get; set; }
     }
 }

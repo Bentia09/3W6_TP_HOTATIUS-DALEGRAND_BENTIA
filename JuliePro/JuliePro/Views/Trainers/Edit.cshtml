@@ -38,16 +38,21 @@
                 <input asp-for="SpecialityId" class="form-control" />
                 <span asp-validation-for="SpecialityId" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <div class="col-4">
+                    <button type="submit" value="Save" class="btn btn-info w-100" aps-route-Id="@Model.Id"><i class="fa-solid fa-floppy-disk"></i>&nbsp;Save </button>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
+    <div class="col-2">
+        <a class="btn btn-secondary w-100" asp-action="Index"><i class="fa-solid fa-circle-arrow-left"></i>&nbsp;Back to List</a>
+    </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

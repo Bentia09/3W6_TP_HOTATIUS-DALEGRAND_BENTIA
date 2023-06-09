@@ -122,6 +122,9 @@ namespace JuliePro.Controllers
         // GET: Speciality/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+        
+
+
             if (id == null || _baseDonnees.Specialities == null)
             {
                 return NotFound();
@@ -134,6 +137,7 @@ namespace JuliePro.Controllers
                 return NotFound();
             }
 
+
             return View(speciality);
         }
 
@@ -142,7 +146,10 @@ namespace JuliePro.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id)
         {
-            if (_baseDonnees.Specialities == null)
+            
+           
+
+                if (_baseDonnees.Specialities == null)
             {
                 return Problem("Entity set 'JulieProDbContext.Specialities'  is null.");
             }
@@ -155,6 +162,7 @@ namespace JuliePro.Controllers
             await _baseDonnees.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+      
 
         private bool SpecialityExists(int? id)
         {
