@@ -7,7 +7,7 @@
 <h1>Speciality</h1>
 
 <p>
-    <a asp-action="Create" asp-controller="Speciality"  class="btn btn-success">Create New</a>
+    <a asp-action="Create" asp-controller="Speciality"  class="btn btn-secondary">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -25,9 +25,9 @@
                @item.Name
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a> |
               
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-secondary">Delete</a>
             </td>
         </tr>
 }

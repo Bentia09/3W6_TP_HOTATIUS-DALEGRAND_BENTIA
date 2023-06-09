@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using JuliePro.Models;
 
 namespace JuliePro.Models
 {

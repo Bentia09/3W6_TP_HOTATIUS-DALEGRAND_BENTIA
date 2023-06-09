@@ -62,6 +62,7 @@ namespace JuliePro.Controllers
             {
                 _baseDonnees.Add(speciality);
                 await _baseDonnees.SaveChangesAsync();
+                TempData["Succes"] = $"Speciality {speciality.Name} added";
                 return RedirectToAction(nameof(Index));
             }
             return View(speciality);

@@ -25,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.Photo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SpecialityId)
+                @Html.DisplayNameFor(model => model.Speciality)
             </th>
             <th></th>
         </tr>
@@ -43,15 +43,15 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Photo)
+                  <img src="@(item.Photo)" class="img-fluid" width="200px" >
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SpecialityId)
+                @Html.DisplayFor(modelItem => item.Speciality.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-secondary">Delete</a>
             </td>
         </tr>
 }

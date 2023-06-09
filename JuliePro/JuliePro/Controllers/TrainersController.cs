@@ -29,8 +29,7 @@ namespace JuliePro.Controllers
         // GET: Trainers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-           var trainers =_baseDonnees.Trainers.Where(x=> x.Id == id);
-
+         Trainer trainers = await _baseDonnees.Trainers.Where(x=>x.Id==id).Include(x=>x.Speciality).FirstAsync();
             return View(trainers);
         }
 
@@ -51,6 +50,7 @@ namespace JuliePro.Controllers
             {
                 _baseDonnees.Add(trainer);
                 await _baseDonnees.SaveChangesAsync();
+                TempData["Success"] = $"{trainer.FirstName} trainer added";
                 return RedirectToAction(nameof(Index));
             }
             return View(trainer);
