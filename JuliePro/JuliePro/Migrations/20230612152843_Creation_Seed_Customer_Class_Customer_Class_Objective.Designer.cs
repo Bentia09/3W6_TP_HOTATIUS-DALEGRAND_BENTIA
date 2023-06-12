@@ -4,6 +4,7 @@ using JuliePro.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JuliePro.Migrations
 {
     [DbContext(typeof(JulieProDbContext))]
-    partial class JulieProDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230612152843_Creation_Seed_Customer_Class_Customer_Class_Objective")]
+    partial class Creation_Seed_Customer_Class_Customer_Class_Objective
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,9 +26,11 @@ namespace JuliePro.Migrations
 
             modelBuilder.Entity("JuliePro.Models.Customer", b =>
                 {
-                    b.Property<string>("FirstName")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
@@ -35,8 +39,10 @@ namespace JuliePro.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -52,7 +58,7 @@ namespace JuliePro.Migrations
                     b.Property<int>("TrainerId")
                         .HasColumnType("int");
 
-                    b.HasKey("FirstName");
+                    b.HasKey("Id");
 
                     b.HasIndex("ObjectiveName");
 
@@ -63,30 +69,30 @@ namespace JuliePro.Migrations
                     b.HasData(
                         new
                         {
-                            FirstName = "Bianka",
+                            Id = 1,
                             BirthDate = new DateTime(1998, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Bianka.Smith@juliepro.ca",
-                            Id = 1,
+                            FirstName = "Bianka",
                             LastName = "Smith",
                             StartWeight = 180.0,
                             TrainerId = 1
                         },
                         new
                         {
-                            FirstName = "Joe",
+                            Id = 2,
                             BirthDate = new DateTime(1990, 8, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Joe.Espejo@juliepro.ca",
-                            Id = 2,
+                            FirstName = "Joe",
                             LastName = "Espejo",
                             StartWeight = 160.0,
                             TrainerId = 1
                         },
                         new
                         {
-                            FirstName = "Betty",
+                            Id = 3,
                             BirthDate = new DateTime(2002, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Betty.Thomas@juliepro.ca",
-                            Id = 3,
+                            FirstName = "Betty",
                             LastName = "Thomas",
                             StartWeight = 190.0,
                             TrainerId = 1

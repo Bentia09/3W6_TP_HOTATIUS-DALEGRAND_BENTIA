@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using JuliePro.Models;
 
 namespace JuliePro.Models
@@ -17,6 +18,7 @@ namespace JuliePro.Models
         [DataType(DataType.ImageUrl)]
         public string? Photo { get; set; }
         public int Id { get; set; }
+        [ForeignKey("Speciality")]
         public int SpecialityId { get; set; }   
         public virtual Speciality? Speciality { get; set; }
 
