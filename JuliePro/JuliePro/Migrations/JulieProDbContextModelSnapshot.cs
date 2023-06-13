@@ -24,9 +24,11 @@ namespace JuliePro.Migrations
 
             modelBuilder.Entity("JuliePro.Models.Customer", b =>
                 {
-                    b.Property<string>("FirstName")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
@@ -35,16 +37,15 @@ namespace JuliePro.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("ObjectiveName")
-                        .HasColumnType("nvarchar(15)");
 
                     b.Property<double>("StartWeight")
                         .HasColumnType("float");
@@ -52,41 +53,39 @@ namespace JuliePro.Migrations
                     b.Property<int>("TrainerId")
                         .HasColumnType("int");
 
-                    b.HasKey("FirstName");
-
-                    b.HasIndex("ObjectiveName");
+                    b.HasKey("Id");
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("Customer");
+                    b.ToTable("Customers");
 
                     b.HasData(
                         new
                         {
-                            FirstName = "Bianka",
+                            Id = 1,
                             BirthDate = new DateTime(1998, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Bianka.Smith@juliepro.ca",
-                            Id = 1,
+                            FirstName = "Bianka",
                             LastName = "Smith",
                             StartWeight = 180.0,
                             TrainerId = 1
                         },
                         new
                         {
-                            FirstName = "Joe",
+                            Id = 2,
                             BirthDate = new DateTime(1990, 8, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Joe.Espejo@juliepro.ca",
-                            Id = 2,
+                            FirstName = "Joe",
                             LastName = "Espejo",
                             StartWeight = 160.0,
                             TrainerId = 1
                         },
                         new
                         {
-                            FirstName = "Betty",
+                            Id = 3,
                             BirthDate = new DateTime(2002, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "Betty.Thomas@juliepro.ca",
-                            Id = 3,
+                            FirstName = "Betty",
                             LastName = "Thomas",
                             StartWeight = 190.0,
                             TrainerId = 1
@@ -95,12 +94,17 @@ namespace JuliePro.Migrations
 
             modelBuilder.Entity("JuliePro.Models.Objective", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("AchievedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
 
                     b.Property<double>("DistanceKm")
                         .HasColumnType("float");
@@ -108,9 +112,73 @@ namespace JuliePro.Migrations
                     b.Property<double>("LostWeightKg")
                         .HasColumnType("float");
 
-                    b.HasKey("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
-                    b.ToTable("Objective");
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId")
+                        .IsUnique();
+
+                    b.ToTable("Objectives");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AchievedDate = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomerId = 1,
+                            DistanceKm = 5.0,
+                            LostWeightKg = 5.0,
+                            Name = "Belly"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AchievedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomerId = 1,
+                            DistanceKm = 10.0,
+                            LostWeightKg = 10.0,
+                            Name = "Fat"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AchievedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomerId = 2,
+                            DistanceKm = 6.0,
+                            LostWeightKg = 2.0,
+                            Name = "Muscle"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AchievedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomerId = 2,
+                            DistanceKm = 8.0,
+                            LostWeightKg = 9.0,
+                            Name = "Back Fat"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AchievedDate = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomerId = 3,
+                            DistanceKm = 3.0,
+                            LostWeightKg = 12.0,
+                            Name = "Lower Body"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AchievedDate = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomerId = 3,
+                            DistanceKm = 2.0,
+                            LostWeightKg = 8.0,
+                            Name = "Abs"
+                        });
                 });
 
             modelBuilder.Entity("JuliePro.Models.Speciality", b =>
@@ -184,8 +252,7 @@ namespace JuliePro.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SpecialityId")
-                        .IsUnique();
+                    b.HasIndex("SpecialityId");
 
                     b.ToTable("Trainers");
 
@@ -257,35 +324,45 @@ namespace JuliePro.Migrations
 
             modelBuilder.Entity("JuliePro.Models.Customer", b =>
                 {
-                    b.HasOne("JuliePro.Models.Objective", "Objective")
-                        .WithMany()
-                        .HasForeignKey("ObjectiveName");
-
                     b.HasOne("JuliePro.Models.Trainer", "Trainer")
                         .WithMany()
                         .HasForeignKey("TrainerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Objective");
-
                     b.Navigation("Trainer");
+                });
+
+            modelBuilder.Entity("JuliePro.Models.Objective", b =>
+                {
+                    b.HasOne("JuliePro.Models.Customer", "Customer")
+                        .WithOne("Objective")
+                        .HasForeignKey("JuliePro.Models.Objective", "CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("JuliePro.Models.Trainer", b =>
                 {
                     b.HasOne("JuliePro.Models.Speciality", "Speciality")
-                        .WithOne("Trainer")
-                        .HasForeignKey("JuliePro.Models.Trainer", "SpecialityId")
+                        .WithMany("Trainers")
+                        .HasForeignKey("SpecialityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Speciality");
                 });
 
+            modelBuilder.Entity("JuliePro.Models.Customer", b =>
+                {
+                    b.Navigation("Objective");
+                });
+
             modelBuilder.Entity("JuliePro.Models.Speciality", b =>
                 {
-                    b.Navigation("Trainer");
+                    b.Navigation("Trainers");
                 });
 #pragma warning restore 612, 618
         }

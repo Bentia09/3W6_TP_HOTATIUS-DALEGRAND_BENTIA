@@ -6,10 +6,10 @@ namespace JuliePro.Models
 {
     public class Speciality
     {
+        public int? Id { get; set; }
         [MinLength(5)]
         [MaxLength(20)]
        public string Name { get; set; }
-        public int? Id { get; set; }
-       public virtual Trainer? Trainer { get; set; }
+       public virtual List<Trainer> Trainers { get; set; }
     }
 }

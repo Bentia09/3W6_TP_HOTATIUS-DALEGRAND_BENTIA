@@ -6,8 +6,9 @@
 
 <h1>Trainers</h1>
 
+
 <p>
-    Create New
+    <a asp-action="Create" asp-controller="Trainers"  class="btn btn-secondary">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -43,7 +44,7 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                  <img src="@(item.Photo)" class="img-fluid" width="200px" >
+                  <img src="/images/Trainers/@(item.Photo)" class="img-fluid" width="200px" >
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Speciality.Name)

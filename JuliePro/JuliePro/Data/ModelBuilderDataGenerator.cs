@@ -46,14 +46,14 @@ namespace JuliePro.Data
 
             #region Objective
             builder.Entity<Objective>().HasData(
-             new Objective() { Name = "Belly", LostWeightKg = 5, AchievedDate = new DateTime(2023, 1, 9), DistanceKm = 5 },
-             new Objective() { Name = "Fat", LostWeightKg = 10, DistanceKm = 10 },
-             new Objective() { Name = "Muscle", LostWeightKg = 2, AchievedDate = new DateTime(2023, 5, 23), DistanceKm = 6 },
-             new Objective() { Name = "Back Fat", LostWeightKg = 9, DistanceKm = 8 }
+             new Objective() {  Id=1,Name = "Belly", LostWeightKg = 5, AchievedDate = new DateTime(2023, 1, 9), DistanceKm = 5 , CustomerId=1},
+             new Objective() { Id=2 ,Name = "Fat", LostWeightKg = 10, DistanceKm = 10 , CustomerId=1},
+             new Objective() {Id=3, Name = "Muscle", LostWeightKg = 2,  DistanceKm = 6 , CustomerId = 2},
+             new Objective() { Id=4, Name = "Back Fat", LostWeightKg = 9, DistanceKm = 8,CustomerId=2 },
+             new Objective() {Id=5, Name="Lower Body", LostWeightKg=12, DistanceKm=3,CustomerId=3 ,AchievedDate=new DateTime(2023,2,1)},
+             new Objective() {Id=6, Name="Abs",LostWeightKg=8,DistanceKm=2,CustomerId=3 ,AchievedDate=new DateTime(2023,3,15)}
+
              );
-             
-             
-             
              
              #endregion
 

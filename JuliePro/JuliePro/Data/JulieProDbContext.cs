@@ -17,6 +17,8 @@ namespace JuliePro.Data
 
         public DbSet<Speciality> Specialities { get; set; }
         public DbSet<Trainer> Trainers { get; set; }
+        public DbSet<Objective> Objectives { get; set; }
+        public DbSet<Customer>Customers { get; set; }
 
     }
 }

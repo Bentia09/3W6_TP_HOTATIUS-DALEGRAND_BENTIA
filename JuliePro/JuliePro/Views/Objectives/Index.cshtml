@@ -1,0 +1,40 @@
+﻿@model IEnumerable<JuliePro.Models.Objective>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Objectives</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LostWeightKg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DistanceKm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AchievedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LostWeightKg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DistanceKm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AchievedDate)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>

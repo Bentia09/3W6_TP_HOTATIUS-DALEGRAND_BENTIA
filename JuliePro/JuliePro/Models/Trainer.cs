@@ -6,6 +6,7 @@ namespace JuliePro.Models
 {
     public class Trainer
     {
+        public int Id { get; set; }
         [MinLength(4)]
         [MaxLength(25)]
         public string FirstName { get; set; }
@@ -17,12 +18,10 @@ namespace JuliePro.Models
         [MaxLength(40)]
         [DataType(DataType.ImageUrl)]
         public string? Photo { get; set; }
-        public int Id { get; set; }
+
         [ForeignKey("Speciality")]
         public int SpecialityId { get; set; }   
         public virtual Speciality? Speciality { get; set; }
-
-
 
     }
 }

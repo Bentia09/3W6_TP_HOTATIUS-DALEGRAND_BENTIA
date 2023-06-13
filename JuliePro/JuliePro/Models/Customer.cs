@@ -8,11 +8,11 @@ namespace JuliePro.Models
 {
     public class Customer
     {
-
+        [Key]
         public int Id { get; set; }
         [MinLength(4)]
         [MaxLength(25)]
-        [Key]
+        
         public string FirstName { get; set; }
 
         [MinLength(4)]
@@ -27,7 +27,7 @@ namespace JuliePro.Models
         public DateTime BirthDate { get; set; }
         [Range(100, 400)]
         public double StartWeight { get; set; }
-        [ForeignKey("Trainer")]
+       
         public int TrainerId { get; set; }
         [ValidateNever]
         public virtual Objective? Objective { get; set; }
